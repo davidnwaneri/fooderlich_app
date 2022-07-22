@@ -1,8 +1,10 @@
 // package import
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// views import
+//
 import 'cubit/bottom_navigation_cubit.dart';
+// views import
+import 'package:fooderlich_app/presentation/exlpore/explore.screen.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
@@ -12,15 +14,7 @@ class HomeView extends StatelessWidget {
   static const _item3 = 'To Buy';
 
   final List<Widget> _pages = [
-    Center(
-      child: Container(
-        width: 200,
-        height: 400,
-        color: Colors.orange,
-        alignment: Alignment.center,
-        child: const Text(_item1),
-      ),
-    ),
+    const ExploreScreen(),
     Center(
       child: Container(
         width: 200,

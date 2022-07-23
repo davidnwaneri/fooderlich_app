@@ -1,28 +1,23 @@
 import 'package:flutter/material.dart';
+import 'circle_image.dart';
 
 class Card2 extends StatelessWidget {
   const Card2({
     Key? key,
-    // required this.bgImage,
-    // required this.authorImage,
-    // required this.authorName,
-    // required this.authorDescription,
+    required this.bgImage,
+    required this.authorImage,
+    required this.authorName,
+    required this.role,
+    required this.title,
+    required this.subtitle,
   }) : super(key: key);
 
-// all this should be uncommented when we use real data
-// the same also applie in the constructor
-  // final ImageProvider bgImage;
-  // final ImageProvider authorImage;
-  // final String authorName;
-  // final String authorDescription;
-// end of uncommenting
-
-  // all this should be discarded when we use the real data
-  static const _bgImage = AssetImage('assets/magazine_pics/card_smoothie.png');
-  static const _authorImage = AssetImage('assets/profile_pics/person_manda.png');
-  static const _authorName = 'Jean-Pierre';
-  static const _authorDescription = 'The Art of Baking';
-  // end of the discardable code
+  final ImageProvider bgImage;
+  final ImageProvider authorImage;
+  final String authorName;
+  final String role;
+  final String title;
+  final String subtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +25,18 @@ class Card2 extends StatelessWidget {
       constraints: const BoxConstraints.expand(width: 350, height: 450),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        image: const DecorationImage(
-          image: _bgImage,
+        image: DecorationImage(
+          image: bgImage,
           fit: BoxFit.cover,
         ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const AuthorCard(
-            image: _authorImage,
-            name: _authorName,
-            description: _authorDescription,
+          AuthorCard(
+            image: authorImage,
+            name: authorName,
+            description: role,
           ),
           Expanded(
             child: Stack(
@@ -52,7 +47,7 @@ class Card2 extends StatelessWidget {
                   child: RotatedBox(
                     quarterTurns: 3,
                     child: Text(
-                      'Smothie',
+                      subtitle,
                       style: Theme.of(context).textTheme.headline5,
                     ),
                   ),
@@ -61,7 +56,7 @@ class Card2 extends StatelessWidget {
                   bottom: 16,
                   right: 16,
                   child: Text(
-                    'Recipe',
+                    title,
                     style: Theme.of(context).textTheme.headline5,
                   ),
                 ),
@@ -117,43 +112,20 @@ class FavoriteIcon extends StatefulWidget {
   const FavoriteIcon({Key? key}) : super(key: key);
 
   @override
-  State<FavoriteIcon> createState() => _FavoriteIconState();
+  State<FavoriteIcon> createState() => FavoriteIconState();
 }
 
-class _FavoriteIconState extends State<FavoriteIcon> {
-  bool _isFavorited = false;
+class FavoriteIconState extends State<FavoriteIcon> {
+  bool isFavorited = false;
   @override
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        setState(() => _isFavorited = !_isFavorited);
+        setState(() => isFavorited = !isFavorited);
       },
       icon: Icon(
-        _isFavorited ? Icons.favorite : Icons.favorite_border,
+        isFavorited ? Icons.favorite : Icons.favorite_border,
         color: Colors.red,
-      ),
-    );
-  }
-}
-
-class CircleImage extends StatelessWidget {
-  const CircleImage({
-    Key? key,
-    required this.image,
-    this.radius = 28,
-  }) : super(key: key);
-
-  final ImageProvider image;
-  final double radius;
-
-  @override
-  Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: radius,
-      backgroundColor: Colors.white,
-      child: CircleAvatar(
-        radius: radius - 5,
-        backgroundImage: image,
       ),
     );
   }

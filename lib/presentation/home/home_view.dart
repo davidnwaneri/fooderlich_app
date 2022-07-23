@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 //
 import 'cubit/bottom_navigation_cubit.dart';
 // views import
-import 'package:fooderlich_app/presentation/exlpore/explore.screen.dart';
+import 'package:fooderlich_app/presentation/explore/explore.screen.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);

@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
 class Card3 extends StatelessWidget {
-  const Card3({Key? key}) : super(key: key);
+  const Card3({
+    Key? key,
+    required this.bgImage,
+    required this.tags,
+    required this.title,
+  }) : super(key: key);
 
-  static const _bgImage = AssetImage('assets/magazine_pics/card_carrot.png');
+  final ImageProvider bgImage;
+  final List<String> tags;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -11,16 +18,16 @@ class Card3 extends StatelessWidget {
       constraints: const BoxConstraints.expand(width: 350, height: 450),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        image: const DecorationImage(
-          image: _bgImage,
+        image: DecorationImage(
+          image: bgImage,
           fit: BoxFit.cover,
         ),
       ),
       child: Stack(
-        children: const [
-          _BuidDarkBackground(),
-          _BuildHeading(),
-          _BuildChips(),
+        children: [
+          const _BuidDarkBackground(),
+          _BuildHeading(title: title),
+          _BuildChips(tags: tags),
         ],
       ),
     );
@@ -46,7 +53,10 @@ class _BuidDarkBackground extends StatelessWidget {
 class _BuildHeading extends StatelessWidget {
   const _BuildHeading({
     Key? key,
+    required this.title,
   }) : super(key: key);
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +71,9 @@ class _BuildHeading extends StatelessWidget {
             color: Colors.white,
             size: 40,
           ),
+          const SizedBox(height: 8),
           Text(
-            'Recipe',
+            title,
             style: Theme.of(context).textTheme.headline5!.copyWith(color: Colors.white),
           ),
         ],
@@ -74,31 +85,20 @@ class _BuildHeading extends StatelessWidget {
 class _BuildChips extends StatelessWidget {
   const _BuildChips({
     Key? key,
+    required this.tags,
   }) : super(key: key);
 
-  static const _tags = [
-    'Dessert',
-    'Cake',
-    'Cupcake',
-    'Cookies',
-    'Candy',
-    'Ice cream',
-    'Dessert',
-    'Cake',
-    'Cupcake',
-    'Cookies',
-    'Candy',
-    'Ice cream',
-  ];
+  final List<String> tags;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Wrap(
-        spacing: 8,
+        spacing: 12,
         runSpacing: 8,
-        children: _tags
+        children: tags
             .map((tag) => Chip(
+                  elevation: 4,
                   label: Text(tag),
                   backgroundColor: Colors.grey.shade900,
                   labelStyle: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),

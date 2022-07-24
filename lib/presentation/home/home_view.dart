@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/bottom_navigation_cubit.dart';
 // views import
 import 'package:fooderlich_app/presentation/explore/explore.screen.dart';
+import 'package:fooderlich_app/presentation/recipe/recipe_view.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
@@ -15,15 +16,7 @@ class HomeView extends StatelessWidget {
 
   final List<Widget> _pages = [
     const ExploreScreen(),
-    Center(
-      child: Container(
-        width: 200,
-        height: 400,
-        color: Colors.purple,
-        alignment: Alignment.center,
-        child: const Text(_item2),
-      ),
-    ),
+    const RecipeView(),
     Center(
       child: Container(
         width: 200,
@@ -43,10 +36,8 @@ class HomeView extends StatelessWidget {
         centerTitle: true,
         title: const Text('Fooderlich'),
       ),
-      body: IndexedStack(
-        index: index,
-        children: _pages,
-      ),
+      body: _pages[index],
+
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(

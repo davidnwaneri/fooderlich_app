@@ -29,6 +29,9 @@ class ExploreDataLoaded extends ExploreDataState {
 
   @override
   List<Object> get props => [recipes, posts];
+
+  @override
+  bool get stringify => true;
 }
 
 class ExploreDataError extends ExploreDataState {

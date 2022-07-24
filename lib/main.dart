@@ -3,11 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 //
 import 'package:fooderlich_app/api/api.dart';
+import 'package:fooderlich_app/bloc_observer.dart';
 // views import
 import 'package:fooderlich_app/presentation/home/home_page.dart';
 
 void main() {
-  runApp(const FooderlichApp());
+  BlocOverrides.runZoned(
+    () {
+      runApp(const FooderlichApp());
+    },
+    blocObserver: FooderlichBlocObserver(),
+  );
 }
 
 class FooderlichApp extends StatelessWidget {
@@ -23,7 +29,7 @@ class FooderlichApp extends StatelessWidget {
       ),
       home: RepositoryProvider(
         create: (context) => MockFooderlichService(),
-        child:const HomePage(),
+        child: const HomePage(),
       ),
     );
   }

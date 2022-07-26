@@ -30,13 +30,30 @@ class GroceryListScreen extends StatelessWidget {
       separatorBuilder: (context, index) => const SizedBox(height: 16),
       itemBuilder: (context, index) {
         final item = items[index];
-        return InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, CreateGroceryItemScreen.id, arguments: item);
+        return Dismissible(
+          key: Key(item.id),
+          direction: DismissDirection.endToStart,
+          background: Container(
+            color: Colors.red,
+            alignment: Alignment.centerRight,
+            child: const Icon(Icons.delete_forever, color: Colors.white, size: 50.0),
+          ),
+          onDismissed: (direction) {
+            context.read<GroceryListBloc>().add(RemoveGroceryItem(id: item.id));
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('${item.name} deleted'),
+              ),
+            );
           },
-          child: GroceryItemTile(
-            item: item,
-            onToggleIsComplete: (value) => onToggleIsComplete(item.id, value, context),
+          child: InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, CreateGroceryItemScreen.id, arguments: item);
+            },
+            child: GroceryItemTile(
+              item: item,
+              onToggleIsComplete: (value) => onToggleIsComplete(item.id, value, context),
+            ),
           ),
         );
       },

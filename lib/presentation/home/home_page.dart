@@ -1,6 +1,7 @@
 // package import
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_lazy_indexed_stack/flutter_lazy_indexed_stack.dart';
 import 'package:fooderlich_app/presentation/grocery/view/grocery_screen.dart';
 //
 import 'cubit/bottom_navigation_cubit.dart';
@@ -30,7 +31,10 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         title: const Text('Fooderlich'),
       ),
-      body: _pages[index],
+      body: LazyIndexedStack(
+        index: index,
+        children: _pages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(

@@ -2,6 +2,16 @@
 
 A social recipe application.
 
+<a href="">
+  <img align="center" style="margin:1rem 0.5rem" src="assets/app1.gif" width="260" />
+</a>
+<a href="">
+  <img align="center" style="margin:1rem 0.5rem" src="assets/app2.gif" width="260" />
+</a>
+<a href="">
+  <img align="center" style="margin:1rem 0.5rem" src="assets/app3.gif" width="260" />
+</a>
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

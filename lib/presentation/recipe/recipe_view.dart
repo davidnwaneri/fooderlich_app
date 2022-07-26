@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/recipe_bloc.dart';
 import 'components/recipe_thumbnail.dart';
 
+/// A widget that displays a list of [SimpleRecipe]s.
 class RecipeView extends StatelessWidget {
   const RecipeView({Key? key}) : super(key: key);
 
@@ -12,8 +13,6 @@ class RecipeView extends StatelessWidget {
     return const RecipeGridView();
   }
 }
-
-/// A widget that displays a list of [SimpleRecipe]s.
 class RecipeGridView extends StatelessWidget {
   const RecipeGridView({Key? key}) : super(key: key);
 

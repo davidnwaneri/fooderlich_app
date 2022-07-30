@@ -14,10 +14,14 @@ class GroceryListBloc extends Bloc<GroceryListEvent, GroceryListState> {
   }
 
   void _onAddGroceryItem(AddGroceryItem event, Emitter<GroceryListState> emit) {
-    final groceryList = [...state.groceryList, event.groceryItem];
-    emit(GroceryListLoaded(
-      groceryList,
-    ));
+    final groceryList = [...state.groceryList];
+    final item = event.groceryItem;
+    if (!groceryList.contains(item)) {
+      groceryList.add(item);
+      emit(GroceryListLoaded(
+        groceryList,
+      ));
+    }
   }
 
   void _onRemoveGroceryItem(RemoveGroceryItem event, Emitter<GroceryListState> emit) {
@@ -34,9 +38,7 @@ class GroceryListBloc extends Bloc<GroceryListEvent, GroceryListState> {
     emit(GroceryListLoaded(
       state.groceryList
           .map(
-            (groceryItem) => groceryItem.id == event.groceryItem.id
-                ? event.groceryItem
-                : groceryItem,
+            (groceryItem) => groceryItem.id == event.groceryItem.id ? event.groceryItem : groceryItem,
           )
           .toList(),
     ));

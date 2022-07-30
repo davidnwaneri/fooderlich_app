@@ -1,12 +1,13 @@
 // packages
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:auto_route/auto_route.dart';
 // views
 import 'package:fooderlich_app/api/models/grocery_item.dart';
-import 'package:fooderlich_app/presentation/grocery/view/create_grocery_item_screen.dart';
 import 'grocery_item_tile.dart';
 //
 import '../bloc/grocery_list_bloc.dart';
+import 'package:fooderlich_app/navigation/app_router.gr.dart';
 
 class GroceryListScreen extends StatelessWidget {
   const GroceryListScreen({
@@ -48,7 +49,7 @@ class GroceryListScreen extends StatelessWidget {
           },
           child: InkWell(
             onTap: () {
-              Navigator.pushNamed(context, CreateGroceryItemScreen.id, arguments: item);
+              context.router.push(EditGroceryItemRouter(groceryItemToEdit: item));
             },
             child: GroceryItemTile(
               item: item,

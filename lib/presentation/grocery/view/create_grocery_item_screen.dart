@@ -1,5 +1,6 @@
 // packages
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uuid/uuid.dart';
@@ -12,7 +13,7 @@ import 'package:fooderlich_app/presentation/grocery/bloc/grocery_list_bloc.dart'
 
 /// A route where an already exising [GroceryItem] is edited, or a new one is created.
 class CreateGroceryItemScreen extends StatefulWidget {
-  static const id = 'create_grocery_item_screen';
+
   const CreateGroceryItemScreen({
     Key? key,
     this.groceryItemToEdit,
@@ -82,10 +83,10 @@ class _CreateGroceryItemScreenState extends State<CreateGroceryItemScreen> {
     );
     if (widget.isEditing) {
       context.read<GroceryListBloc>().add(EditGroceryItem(groceryItem: groceryItem));
-      Navigator.pop(context, groceryItem);
+      context.router.pop();
     } else {
       context.read<GroceryListBloc>().add(AddGroceryItem(groceryItem: groceryItem));
-      Navigator.pop(context, groceryItem);
+      context.router.pop();
     }
   }
 

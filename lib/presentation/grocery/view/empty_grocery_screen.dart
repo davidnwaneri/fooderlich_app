@@ -1,6 +1,8 @@
+// packages
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fooderlich_app/presentation/home/cubit/bottom_navigation_cubit.dart';
+import 'package:auto_route/auto_route.dart';
+//
+import 'package:fooderlich_app/navigation/app_router.gr.dart';
 
 class EmptyGroceryScreen extends StatelessWidget {
   const EmptyGroceryScreen({
@@ -38,7 +40,7 @@ class EmptyGroceryScreen extends StatelessWidget {
               ),
               color: Colors.green,
               onPressed: () {
-                context.read<BottomNavigationCubit>().goToRecipes();
+                context.router.navigate(const RecipeRouter());
               },
               child: const Text('Browse Recipes'),
             ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 //
 import 'package:fooderlich_app/navigation/app_router.gr.dart';
+import 'package:fooderlich_app/presentation/explore/components/components.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,9 +25,19 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         title: const Text('Fooderlich'),
         leading: const AutoLeadingButton(),
+        actions: [
+          GestureDetector(
+            onTap: () => context.router.push(const ProfileRoute()),
+            child: const CircleImage(
+              image: AssetImage('assets/profile_pics/my_dashatar.png'),
+              radius: 15,
+            ),
+          ),
+          const SizedBox(width: 8),
+        ],
       ),
       routes: _pages,
-      bottomNavigationBuilder: (_, tabsRouter) =>  BottomNavigationBar(
+      bottomNavigationBuilder: (_, tabsRouter) => BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.explore),

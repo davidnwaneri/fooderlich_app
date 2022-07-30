@@ -5,6 +5,7 @@ import 'package:fooderlich_app/presentation/explore/explore.screen.dart';
 import 'package:fooderlich_app/presentation/recipe/recipe_view.dart';
 import 'package:fooderlich_app/presentation/grocery/view/grocery_screen.dart';
 import 'package:fooderlich_app/presentation/grocery/view/create_grocery_item_screen.dart';
+import 'package:fooderlich_app/profile/profile_page.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -39,6 +40,10 @@ import 'package:fooderlich_app/presentation/grocery/view/create_grocery_item_scr
       path: 'create-grocery-item',
       name: 'CreateGroceryItemRouter',
       page: CreateGroceryItemScreen,
+    ),
+    AutoRoute(
+      path: '/profile',
+      page: ProfilePage,
     ),
   ],
 )

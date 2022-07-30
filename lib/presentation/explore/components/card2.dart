@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'circle_image.dart';
+import '../../components/circle_image.dart';
 
 class Card2 extends StatelessWidget {
   const Card2({

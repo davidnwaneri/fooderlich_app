@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fooderlich_app/api/models/models.dart';
-
-import '../components/components.dart';
+import 'package:fooderlich_app/presentation/components/circle_image.dart';
 
 class FriendsPostListView extends StatelessWidget {
   const FriendsPostListView({

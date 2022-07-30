@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 //
 import 'package:fooderlich_app/navigation/app_router.gr.dart';
-import 'package:fooderlich_app/presentation/explore/components/components.dart';
+import 'package:fooderlich_app/presentation/components/circle_image.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

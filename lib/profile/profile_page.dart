@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:fooderlich_app/api/models/models.dart';
-import 'package:fooderlich_app/presentation/explore/components/components.dart';
+import 'package:fooderlich_app/presentation/components/circle_image.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);

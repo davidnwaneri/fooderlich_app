@@ -6,6 +6,7 @@ import 'package:fooderlich_app/presentation/recipe/recipe_view.dart';
 import 'package:fooderlich_app/presentation/grocery/view/grocery_screen.dart';
 import 'package:fooderlich_app/presentation/grocery/view/create_grocery_item_screen.dart';
 import 'package:fooderlich_app/profile/profile_page.dart';
+import 'package:fooderlich_app/profile/web_view_page.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -44,6 +45,10 @@ import 'package:fooderlich_app/profile/profile_page.dart';
     AutoRoute(
       path: '/profile',
       page: ProfilePage,
+    ),
+    AutoRoute(
+      path: '/web-view',
+      page: WebViewPage,
     ),
   ],
 )

@@ -103,7 +103,7 @@ class BuildMenu extends StatelessWidget {
         ),
         ListTile(
           title: const Text('View developer\'s profile '),
-          onTap: () {},
+          onTap: () => context.router.push(const WebViewRoute()),
         ),
         ListTile(
           title: const Text('Log out'),

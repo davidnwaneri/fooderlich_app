@@ -1,6 +1,8 @@
 // package import
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fooderlich_app/theme/app_theme.dart';
+import 'package:fooderlich_app/theme/cubit/theme_cubit.dart';
 //
 import 'navigation/app_router.gr.dart';
 import 'package:fooderlich_app/bloc_observer.dart';
@@ -41,16 +43,23 @@ class FooderlichApp extends StatelessWidget {
           BlocProvider<GroceryListBloc>(
             create: (context) => GroceryListBloc(),
           ),
-        ],
-        child: MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          title: 'Fooderlich',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
+          BlocProvider<ThemeCubit>(
+            create: (context) => ThemeCubit(),
           ),
-          routerDelegate: _appRouter.delegate(),
-          routeInformationParser: _appRouter.defaultRouteParser(),
-          backButtonDispatcher: RootBackButtonDispatcher(),
+        ],
+        child: BlocBuilder<ThemeCubit, ThemeState>(
+          builder: (context, state) {
+            return MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              title: 'Fooderlich',
+              theme: FooderlichAppTheme.appTheme[AppTheme.light],
+              darkTheme: FooderlichAppTheme.appTheme[AppTheme.dark],
+              themeMode: state.themeMode,
+              routerDelegate: _appRouter.delegate(),
+              routeInformationParser: _appRouter.defaultRouteParser(),
+              backButtonDispatcher: RootBackButtonDispatcher(),
+            );
+          },
         ),
       ),
     );

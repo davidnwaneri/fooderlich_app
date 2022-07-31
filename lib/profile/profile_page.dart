@@ -1,8 +1,11 @@
 // packages
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fooderlich_app/api/models/models.dart';
+import 'package:fooderlich_app/navigation/app_router.gr.dart';
 import 'package:fooderlich_app/presentation/components/circle_image.dart';
+import 'package:fooderlich_app/theme/cubit/theme_cubit.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -20,7 +23,7 @@ class ProfilePage extends StatelessWidget {
       ),
       body: Center(
         child: Builder(builder: (context) {
-          bool isDarkMode = false;
+          bool isDarkMode = context.read<ThemeCubit>().state.isDarkMode;
           final user = User(
             lastName: 'Nwaneri',
             firstName: 'David',
@@ -98,7 +101,7 @@ class BuildMenu extends StatelessWidget {
           title: const Text('Dark mode'),
           trailing: Switch(
             value: darkMode,
-            onChanged: (value) {},
+            onChanged: (value) => context.read<ThemeCubit>().toggleDarkThemeMode(value),
           ),
         ),
         ListTile(
